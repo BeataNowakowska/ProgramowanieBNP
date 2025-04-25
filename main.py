@@ -1,7 +1,7 @@
-from log import Logger
+import unittest
+from sort_test import TestBubbleSort
 
-logger = Logger("main_log.txt")
-
-logger.log("Program started...")
-print("Mam na imię Genowefa.")
-logger.log("Program ends...")
+# Uruchomienie testów
+if __name__ == '__main__':
+  suite = unittest.TestLoader().loadTestsFromTestCase(TestBubbleSort)
+  unittest.TextTestRunner().run(suite)
