@@ -1,4 +1,4 @@
-from Log import Logger
+from log import Logger
 
 logger = Logger("main_log.txt")
 
