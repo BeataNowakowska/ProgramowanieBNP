@@ -1,1 +1,6 @@
-print("Hello World")
+from Log import Logger
+
+logger = Logger("main_log.txt")
+
+logger.log("Program started.")
+print("Mam na imię Mateusz")
