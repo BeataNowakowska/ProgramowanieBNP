@@ -6,5 +6,3 @@ def bubble_sort(numbers):
             if numbers[j] > numbers[j + 1]:
                 numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
     return numbers
-
-
