@@ -1,28 +1,71 @@
-def figury():
-  figura = input(
-      "Jakiej figury pole chcesz policzyć? (koło, kwadrat, prostokąt, trójkąt): "
-  ).strip().lower()
+import random
+import time
+from abc import ABC, abstractmethod
 
-  if figura == "koło":
-    r = float(input("Podaj promień: "))
-    pole = 3.14159 * r * r
-  elif figura == "kwadrat":
-    a = float(input("Podaj długość boku: "))
-    pole = a * a
-  elif figura == "prostokąt":
-    a = float(input("Podaj długość pierwszego boku: "))
-    b = float(input("Podaj długość drugiego boku: "))
-    pole = a * b
-  elif figura == "trójkąt":
-    a = float(input("Podaj długość podstawy: "))
-    h = float(input("Podaj wysokość: "))
-    pole = (a * h) / 2
-  else:
-    print("Nieznana figura.")
-    return
+class OsobaIT(ABC):
+    def __init__(self, imie):
+        self.imie = imie
+        self.profesja = ""
+        self.tekst = ""
 
-  print(f"Pole {figura} wynosi {pole:.2f}")
+    def daj_glos(self):
+        return f"{self.imie}, jak to {self.profesja}, mówi: {self.tekst}"
 
+class Programista(OsobaIT):
+    def __init__(self, imie):
+        super().__init__(imie)
+        self.profesja = "programistka"
+        self.tekst = "U mnie działa, pewnie masz coś źle ustawione."
+
+class Tester(OsobaIT):
+    def __init__(self, imie):
+        super().__init__(imie)
+        self.profesja = "tester"
+        self.tekst = "O, znowu coś zepsuliście."
+
+class ScrumMaster(OsobaIT):
+    def __init__(self, imie):
+        super().__init__(imie)
+        self.profesja = "Scrum Masterka"
+        self.tekst = "Czuję, że powinniśmy zrobić burzę mózgów."
+
+class DevOps(OsobaIT):
+    def __init__(self, imie):
+        super().__init__(imie)
+        self.profesja = "DevOpsowiec"
+        self.tekst = "W produkcji? To ciekawe..."
+
+class ProductOwner(OsobaIT):
+    def __init__(self, imie):
+        super().__init__(imie)
+        self.profesja = "Product Ownerka"
+        self.tekst = "Czy możemy to mieć na wczoraj?"
+
+class UXDesigner(OsobaIT):
+    def __init__(self, imie):
+        super().__init__(imie)
+        self.profesja = "UX designer"
+        self.tekst = "To trzeba zrobić bardziej intuicyjnie."
+
+def stworz_osoby():
+    osoby = [
+        Programista("Ania"),
+        Tester("Bartek"),
+        ScrumMaster("Celina"),
+        DevOps("Darek"),
+        ProductOwner("Ewa"),
+        UXDesigner("Filip")
+    ]
+    random.shuffle(osoby)  # tasowanie ukryte tutaj
+    return osoby
+
+def main():
+    osoby = stworz_osoby()
+
+    print("Codzienność w IT:")
+    for osoba in osoby:
+        print(osoba.daj_glos())
+        time.sleep(1)
 
 if __name__ == "__main__":
-  figury()
+    main()
