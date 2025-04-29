@@ -65,7 +65,7 @@ def main():
     print("Codzienność w IT:")
     for osoba in osoby:
         print(osoba.daj_glos())
-        time.sleep(1)
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
